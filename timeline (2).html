@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Noticias África</title>
+  <!-- Librerías necesarias de TimelineJS -->
+  <script src="https://cdn.knightlab.com/libs/timeline3/latest/js/timeline.js"></script>
+  <link rel="stylesheet" href="https://cdn.knightlab.com/libs/timeline3/latest/css/timeline.css">
+</head>
+<body>
+  <!-- Aquí aparecerá el timeline -->
+  <div id="timeline-embed" style="width: 100%; height: 600px"></div>
+
+  <script>
+    // Aquí va tu JSON de noticias
+    var timeline_json = {"title":{"text":{"headline":"Noticias África","text":""}},"events":[...tu JSON completo...]};
+
+    // Crea el timeline en la web
+    var timeline = new TL.Timeline('timeline-embed', timeline_json);
+  </script>
+</body>
+</html>
