@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Timeline Noticias África</title>
+
+<link rel="stylesheet" href="https://cdn.knightlab.com/libs/timeline3/latest/css/timeline.css">
+
+<style>
+#timeline-embed{
+width:100%;
+height:650px;
+}
+</style>
+
+</head>
+
+<body>
+
+<h2>Noticias África</h2>
+
+<div id="timeline-embed"></div>
+
+<script src="https://cdn.knightlab.com/libs/timeline3/latest/js/timeline.js"></script>
+
+<script>
+
+const url = "https://script.google.com/macros/s/AKfycbyKHUguCmTvQlmt1LdXjfbukGSABsaon_liAUbugTW_y-dvt480SFrehFiU6Uv_b3RR/exec";
+
+fetch(url)
+.then(res => res.json())
+.then(data => {
+
+  // eliminar eventos vacíos
+  data.events = data.events.filter(e =>
+    e.text &&
+    e.text.text &&
+    e.text.text.trim() !== "" &&
+    e.text.text.trim() !== "." &&
+    e.text.text.trim() !== ","
+  );
+
+  const options = {
+    start_at_end: false,
+    hash_bookmark: true,
+    initial_zoom: 2
+  };
+
+  new TL.Timeline("timeline-embed", data, options);
+
+})
+.catch(err => {
+  console.error(err);
+  document.getElementById("timeline-embed").innerHTML =
+  "<p>Error cargando timeline</p>";
+});
+
+</script>
+
+</body>
+</html>
